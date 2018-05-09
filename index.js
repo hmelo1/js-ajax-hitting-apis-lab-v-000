@@ -15,6 +15,7 @@ function getRepositories(){
 }
 
 function getCommits(el) {
+  //const name = el.dataset.repo  -- Need to replace with the el.dataset downbelow with this to make it work.
   const req = new XMLHttpRequest()
   req.addEventListener("load", displayCommits)
   req.open("GET", `https://api.github.com/repos/${username.value}/${el.dataset.repository}/commits`)
@@ -28,9 +29,10 @@ function displayCommits() {
 }
 
 function getBranches(el){
+  //const name = el.dataset.repo  -- Need to replace with the el.dataset downbelow with this to make it work.
   const req = new XMLHttpRequest()
   req.addEventListener("load", displayBranches)
-  request.open("GET", `https://api.github.com/repos/${username.value}/${el.dataset.repository}/branches`)
+  req.open("GET", `https://api.github.com/repos/${username.value}/${el.dataset.repository}/branches`)
   req.send()
 }
 
