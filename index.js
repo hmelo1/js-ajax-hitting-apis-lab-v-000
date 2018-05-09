@@ -1,4 +1,4 @@
-function showRepositories(event, data) {
+function displayRepositories(event, data) {
   //this is set to the XMLHttpRequest object that fired the event
 
   var repos = JSON.parse(this.responseText)
@@ -9,7 +9,7 @@ function showRepositories(event, data) {
 
 function getRepositories(){
   const req = new XMLHttpRequest();
-  req.addEventListener("load", showRepositories);
+  req.addEventListener("load", displayRepositories);
   req.open("GET", `https://api.github.com/users/${username.value}/repos`);
   req.send();
 }
@@ -37,5 +37,7 @@ function getBranches(el){
 }
 
 function displayBranches(){
-
+  const branches = JSON.parse(this.responseText)
+  const commitsList = `<ul>${branches.map(branch => '<li><strong>' + branch.author.login + '</li>').join('')}</ul>`
+  document.getElementById("details").innerHTML = commitsList
 }
