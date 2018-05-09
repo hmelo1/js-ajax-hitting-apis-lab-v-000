@@ -1,8 +1,8 @@
 function displayRepositories(event, data) {
   //this is set to the XMLHttpRequest object that fired the event
 
-  var repos = JSON.parse(this.responseText)
-  let repoList = `<ul>${repos.map(r => '<li><a href="' + r.html_url + '">' + r.name + ' - <a href="#" data-repo="' + r.name + '" onclick="getCommits(this)">Get Commits</a></li>' + ' - <a href="#" data-repo="' + r.name + '" onclick="getBranches(this)">Get Branches</a></li>').join('')}</ul>`
+  const repos = JSON.parse(this.responseText)
+  const repoList = `<ul>${repos.map(r => '<li><a href="' + r.html_url + '">' + r.name + ' - <a href="#" data-repo="' + r.name + '" onclick="getCommits(this)">Get Commits</a></li>' + ' - <a href="#" data-repo="' + r.name + '" onclick="getBranches(this)">Get Branches</a></li>').join('')}</ul>`
   document.getElementById("repositories").innerHTML = repoList
 }
 
@@ -38,6 +38,6 @@ function getBranches(el){
 
 function displayBranches(){
   const branches = JSON.parse(this.responseText)
-  const commitsList = `<ul>${branches.map(branch => '<li><strong>' + branch.name + '</li>').join('')}</ul>`
+  const branchesList = `<ul>${branches.map(branch => '<li><strong>' + branch.name + '</li>').join('')}</ul>`
   document.getElementById("details").innerHTML = commitsList
 }
